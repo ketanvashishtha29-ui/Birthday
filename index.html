@@ -96,13 +96,16 @@ button:hover {
 </div>
 
 <!-- Background Music -->
-<audio autoplay loop>
+<audio id="music" loop>
   <source src="birthday.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 function nextPage() {
-  window.location.href = "next.html";
+  document.getElementById("music").play();
+  setTimeout(function(){
+    window.location.href = "next.html";
+  }, 1000);
 }
 
 /* Confetti */
