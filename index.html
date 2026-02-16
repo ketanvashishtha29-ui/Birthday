@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sunny</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: url('photo.png') no-repeat center center/cover;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.65);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Royal Glow Text */
+h1 {
+  font-size: 55px;
+  background: linear-gradient(45deg, gold, white, gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { background-position: 0%; }
+  100% { background-position: 400%; }
+}
+
+/* Royal Button */
+button {
+  padding: 15px 35px;
+  font-size: 20px;
+  background: linear-gradient(45deg, #ff0080, #ffcc00);
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-top: 25px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px gold;
+}
+
+/* Confetti */
+.confetti, .heart {
+  position: absolute;
+  top: -10px;
+  animation: fall linear infinite;
+}
+
+.confetti {
+  width: 10px;
+  height: 10px;
+}
+
+.heart {
+  font-size: 20px;
+  color: pink;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+  h1 { font-size: 32px; padding: 0 20px; }
+  button { font-size: 16px; padding: 12px 25px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <h1>👑 Happy Birthday Sunny 👑</h1>
+  <button onclick="nextPage()">Click Here ❤️</button>
+</div>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function nextPage() {
+  window.location.href = "next.html";
+}
+
+/* Confetti */
+for (let i = 0; i < 80; i++) {
+  let confetti = document.createElement("div");
+  confetti.classList.add("confetti");
+  confetti.style.left = Math.random() * 100 + "vw";
+  confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  confetti.style.backgroundColor =
+    ["red","yellow","blue","green","pink","orange","gold"][Math.floor(Math.random()*7)];
+  document.body.appendChild(confetti);
+}
+
+/* Hearts */
+for (let i = 0; i < 40; i++) {
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 4 + 3) + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
+

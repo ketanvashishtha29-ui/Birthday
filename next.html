@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sunny ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, #000000, #3b0000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: gold;
+  font-family: Arial;
+  overflow: hidden;
+  text-align: center;
+}
+
+h1 {
+  font-size: 35px;
+}
+
+img {
+  width: 85%;
+  max-width: 500px;
+  border-radius: 25px;
+  box-shadow: 0 0 40px gold;
+  margin-top: 20px;
+}
+
+/* Firework */
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: yellow;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+@media(max-width:768px){
+  h1 { font-size: 24px; padding: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="typing"></h1>
+
+<img src="photo.png">
+
+<script>
+/* Typing Effect */
+let text = "❤️ Happy Birthday My Dear Sunny ❤️";
+let i = 0;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 80);
+  }
+}
+typing();
+
+/* Fireworks */
+setInterval(() => {
+  for (let i = 0; i < 20; i++) {
+    let fire = document.createElement("div");
+    fire.classList.add("firework");
+    fire.style.left = Math.random() * 100 + "vw";
+    fire.style.top = Math.random() * 100 + "vh";
+    fire.style.setProperty('--x', (Math.random()*200-100)+'px');
+    fire.style.setProperty('--y', (Math.random()*200-100)+'px');
+    fire.style.background =
+      ["red","yellow","orange","pink","gold"][Math.floor(Math.random()*5)];
+    document.body.appendChild(fire);
+
+    setTimeout(()=>{ fire.remove(); },1000);
+  }
+}, 1500);
+
+/* Surprise Popup */
+setTimeout(() => {
+  alert("💖 You Are My Special Person Sunny 💖");
+}, 4000);
+
+</script>
+
+</body>
+</html>
+
