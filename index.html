@@ -96,9 +96,19 @@ button:hover {
 </div>
 
 <!-- Background Music -->
-<audio id="music" loop>
+<audio id="music" autoplay loop muted>
   <source src="birthday.mp3" type="audio/mpeg">
 </audio>
+
+<script>
+window.addEventListener("load", function() {
+  var music = document.getElementById("music");
+  music.play();
+  setTimeout(function(){
+    music.muted = false;
+  }, 1000);
+});
+</script>
 
 <script>
 function nextPage() {
